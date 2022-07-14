@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+
+
 
 const StyledPersonalProfile = styled.div`
     width: 60%;
@@ -30,10 +33,26 @@ const StyledProfilePicture = styled.img`
 const PersonalProfile = props => {
     return (
         <StyledPersonalProfile className="personal-dash-wrapper">
+            <div className="profile">
+                <StyledProfilePicture src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"/>
+                <h1>Ethan Miles</h1>
+                <h3>Description Here</h3>
+                <Button variant="contained">Edit Profile</Button>
+            </div>
+            {/* <div className="profile-edit">
             <StyledProfilePicture src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"/>
-            <h1>Ethan Miles</h1>
-            <h3>Description Here</h3>
-            <Button variant="contained">Edit Profile</Button>
+            <TextField
+          id="outlined-required"
+          label="Edit Name"
+          defaultValue="Ethan Miles"
+            />
+            <TextField
+          id="outlined-required"
+          label="Edit Description"
+          defaultValue="Description"
+            />
+            <Button variant="contained">Save</Button>
+            </div> */}
         </StyledPersonalProfile>
     )
 }
