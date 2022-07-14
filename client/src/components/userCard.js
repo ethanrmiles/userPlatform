@@ -28,11 +28,13 @@ const StyledProfilePicture = styled.img`
 
 
 const UserCard = props => {
+    const { user } = props
+    
     return (
         <StyledUserCard className="personal-dash-wrapper">
             <StyledProfilePicture src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
-            <h1>John Cena</h1>
-            <h3>Oh yeah, this is a great description</h3>
+            <h1>{user.name}</h1>
+            <h3>{user.description}</h3>
         </StyledUserCard>
     )
 }

@@ -27,23 +27,28 @@ const Styledh3 = styled.h3`
 
 
 function App() {
-  const [profiles, setProfiles] = useState()
+  const [ users, setUsers ]  = useState()
 
 useEffect(() => {
-  axios.get('http://localhost:3000/api/users')
+
+  const fetchData = async () => {
+    axios.get('http://localhost:3000/api/users')
   .then(res => {
-    console.log(res)
+    
+    setUsers(res.data.users)
   })
   .catch(err => console.log(err))
+  }
+  fetchData()
+  
 }, [])
-
   return (
     <AppContainer>
       <h1>Welcome!</h1>
       <h2>Here is your profile:</h2>
       <PersonalProfile/>
       <Styledh3>View other Profiles:</Styledh3>
-      <UserCard />
+      {users.map(user => <UserCard user={user} />)}
     </AppContainer>
     
   );
