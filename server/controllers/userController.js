@@ -3,8 +3,12 @@ const User = require('../models/userModel')
 
 
 const getAllUsers = async(req,res) => {
-    const users = await User.find()
-    return users
+    try {
+        const users = await User.find()
+        res.status(200).json({ users })
+    }catch(err){
+        res.status(404).json({ message: 'Sorry, no users found'})
+    }
 }
 
 const getUserById = async (id) => {
