@@ -1,3 +1,4 @@
+
 const User = require('../models/userModel')
 
 
@@ -21,12 +22,15 @@ const getUserById = async (req, res) => {
 }
 
 const newUser = async (req, res) => {
-    console.log(req.body)
-    // const data = req.body
+    const data = {
+        name: req.body.name,
+        description: req.body.description
+    }
     const newUser = new User(data)
     try{
         const user = await User.create({
-            user: data
+            name: data.name,
+            description: data.description
         })
         res.status(201).json({ user })
     }catch(err){
