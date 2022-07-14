@@ -14,7 +14,7 @@ const getAllUsers = async(req,res) => {
 
 const getUserById = async (req, res) => {
    try{ 
-    const user = await User.find(req.params.id)
+    const user = await User.findById(req.params.id)
     res.status(200).json({ user })
    }catch(err){
     res.status(404).json({ message: "Sorry, no user was found"})
@@ -38,8 +38,23 @@ const newUser = async (req, res) => {
     }
 }
 
-const update = () => {
-    res.status(200).json({ message: "Changes made to my user profile"})
+const update = async(req, res) => {
+    try{
+        const user = await User.findById(req.params.id)
+        if(!user){
+            res.status(400).json({ message: "Sorry, that user does not exist"})
+        }
+
+        // const change = req.body.name || req.body.description
+        const updatedUser = await User.findByIdAndUpdate(
+            req.params.id, 
+            req.body, 
+            { new: true}
+            )
+            res.status(200).json(updatedUser)
+    }catch(err){
+        res.status(400).json({ message: "Cannot update user"})
+    }
 }
 
 module.exports = {
