@@ -1,12 +1,9 @@
 const express = require('express')
 const router = express.Router()
+const { getUserById, update } = require('../controllers/userController')
 
-router.get('/', (req, res) => {
-    res.status(200).json({ message: 'This is my user profile'})
-})
+router.get('/', getUserById)
 
-router.put('/', (req,res) => {
-    res.status(200).json({ message: "Changes made to my user profile"})
-})
+router.put('/', update)
 
 module.exports = router

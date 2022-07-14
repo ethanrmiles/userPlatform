@@ -1,12 +1,10 @@
 const express = require('express')
 const router = express.Router()
+const functions = require('../controllers/userController')
+const { getAllUsers, newUser } = require('../controllers/userController')
 
-router.get('/', (req, res) => {
-    res.status(200).json({ message: 'Get all Users'})
-})
+router.get('/', getAllUsers)
 
-router.post('/', (req,res) => {
-    res.status(200).json({ message: "Post to Users"})
-})
+router.post('/', newUser)
 
 module.exports = router
