@@ -5,6 +5,10 @@ import styled from 'styled-components'
 import UserCard from './components/userCard';
 import PersonalProfile from './components/personalProfile'
 import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
+import axios from 'axios'
+
+
 
 const AppContainer = styled.div`
 width: 100%;
@@ -23,6 +27,16 @@ const Styledh3 = styled.h3`
 
 
 function App() {
+  const [profiles, setProfiles] = useState()
+
+useEffect(() => {
+  axios.get('http://localhost:3000/api/users')
+  .then(res => {
+    console.log(res)
+  })
+  .catch(err => console.log(err))
+}, [])
+
   return (
     <AppContainer>
       <h1>Welcome!</h1>
