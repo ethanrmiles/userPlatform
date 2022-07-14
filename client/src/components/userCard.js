@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import Button from '@mui/material/Button';
 
-const StyledPersonalDash = styled.div`
+const StyledUserCard = styled.div`
     width: 60%;
     background-color: white;
     display: flex;
@@ -27,15 +27,14 @@ const StyledProfilePicture = styled.img`
 
 
 
-const PersonalDash = props => {
+const UserCard = props => {
     return (
-        <StyledPersonalDash className="personal-dash-wrapper">
-            <StyledProfilePicture src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"/>
-            <h1>Ethan Miles</h1>
-            <h3>Description Here</h3>
-            <Button variant="contained">Edit Profile</Button>
-        </StyledPersonalDash>
+        <StyledUserCard className="personal-dash-wrapper">
+            <StyledProfilePicture src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"/>
+            <h1>John Cena</h1>
+            <h3>Oh yeah, this is a great description</h3>
+        </StyledUserCard>
     )
 }
 
-export default PersonalDash
+export default UserCard

@@ -2,7 +2,8 @@
 import './App.css';
 import React from 'react';
 import styled from 'styled-components'
-import PersonalDash from './components/personalDashboard';
+import UserCard from './components/userCard';
+import PersonalProfile from './components/personalProfile'
 import Button from '@mui/material/Button';
 
 const AppContainer = styled.div`
@@ -17,7 +18,7 @@ padding-top: 40%;
 
 const Styledh3 = styled.h3`
   font-size: 16;
-  margin-top: 7%
+  margin-top: 30%
 `
 
 
@@ -26,9 +27,9 @@ function App() {
     <AppContainer>
       <h1>Welcome!</h1>
       <h2>Here is your profile:</h2>
-      <PersonalDash/>
+      <PersonalProfile/>
       <Styledh3>View other Profiles:</Styledh3>
-      <Button variant="outlined">View other Profiles</Button>
+      <UserCard />
     </AppContainer>
     
   );
