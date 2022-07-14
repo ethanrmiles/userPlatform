@@ -13,7 +13,7 @@ mongoose.connect('mongodb+srv://newuser:QPY5TvVWvcLCMkOT@take-home.506qia4.mongo
     useNewUrlParser: true
 })
 
-app.use('/api', usersRouter)
+app.use('/api/users', usersRouter)
 
 app.get('/', async(req, res) => {
     const user = new UserModel({name: 'Ethan', description: 'foobarbaz'})
