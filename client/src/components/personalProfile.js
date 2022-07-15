@@ -43,11 +43,10 @@ const StyledImageWrapper = styled.div`
 const PersonalProfile = props => {
     const { ethanInfo } = props
     const [edit, setEdit] = useState(false)
-    const [profile, setProfile] = useState(ethanInfo ? ethanInfo : { name: 'Ethan', description: 'ethan[0] did not load'})
+    const [profile, setProfile] = useState(ethanInfo[0])
     const [formValues, setFormValues] = useState({name: '', description: ''})
     const [files, setFiles] = useState({})
 
-    console.log(ethanInfo)
 
     const updateForm = (name, value) => {
         setFormValues({ ...formValues, [name]: value})
@@ -61,10 +60,12 @@ const PersonalProfile = props => {
     }
 
     const postChanges = changes => {
-        debugger
-        axios.put(`http://localhost:3000/api/user/${ethanInfo._id}`, changes)
+        axios.put(`http://localhost:3000/api/user/${ethanInfo[0]._id}`, changes)
         .then(res => {
             console.log(res)
+            console.log(formValues)
+            setProfile(formValues)
+            setEdit(false)
         })
         .catch(err => {
             console.log(err)
@@ -91,15 +92,14 @@ const PersonalProfile = props => {
         setFiles({files: files})
     }
 
-   
     return (
         <>
         {edit === false &&
              <StyledPersonalProfile className="personal-dash-wrapper">
              <div className="profile">
                  <StyledProfilePicture src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"/>
-                 <h1>{ethanInfo?.name}</h1>
-                 <h3>{ethanInfo?.description}</h3>
+                 <h1>{profile?.name}</h1>
+                 <h3>{profile?.description}</h3>
                  <Button variant="contained" onClick={() => setEdit(true)}>Edit Profile</Button>
              </div>
          </StyledPersonalProfile>

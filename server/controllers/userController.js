@@ -46,6 +46,8 @@ const update = async(req, res) => {
         }
 
         // const change = req.body.name || req.body.description
+        console.log('req.params from inside controller', req.params)
+        console.log('req.body from insdie controller', req.body)
         const updatedUser = await User.findByIdAndUpdate(
             req.params.id, 
             req.body, 

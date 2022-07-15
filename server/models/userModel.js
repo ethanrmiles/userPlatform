@@ -9,6 +9,10 @@ const userSchema = mongoose.Schema({
         type: String,
         required: [true, 'Please add description']
     },
+    image: {
+        type: String,
+        image: Buffer
+    }
     
 }, 
 {
