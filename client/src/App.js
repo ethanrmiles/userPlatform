@@ -53,7 +53,7 @@ function App() {
       loading ? (
         <h1>Loading...</h1>
       ) : (
-        <PersonalProfile ethanInfo={null} />
+        <PersonalProfile ethanInfo={users?.filter(user => user.name === 'Ethan')} />
       )
      }
       <Styledh3>View other Profiles:</Styledh3>
