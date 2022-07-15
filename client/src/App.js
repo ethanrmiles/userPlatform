@@ -26,47 +26,24 @@ const Styledh3 = styled.h3`
 `
 
 
+// axios.get('http://localhost:3000/api/users')
+
+
 function App() {
   const [ users, setUsers ]  = useState()
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   const fetchUsers = async () => {
-    const fetched = await axios.get('http://localhost:3000/api/users')
-    .then(res => {
-      setUsers(res.data.users)
-    })
-    .catch(err => {
-      console.log('🚨', err)
-    })
-  }
+    const res = await axios.get('http://localhost:3000/api/users')
+    const data = await res.data.users
+    setUsers(data);
+    setLoading(false)
+  };
 
-  
-useEffect(() => {
-  setLoading(true)
-  fetchUsers()
-  setLoading(false)
-}, [])
+  useEffect(() => {
+    fetchUsers();
+  }, []);
 
-// useEffect(() => {
-//   console.log(users)
-// }, [users])
-
-// useEffect(() => {
-//   const loadUsers = async () => {
-//     setLoading(true)
-//     const res = await axios.get('http://localhost:3000/api/users')
-//     setUsers(res.data.users)
-//     debugger
-//     setLoading(false)
-//     console.log(`Fetched Users: ${ { users } }`)
-//   }
-
-//   loadUsers()
-// }, [])
-
-  const found = users?.find(user => {
-    return user.name === 'Ethan'
-  })
 
   return (
     <AppContainer>
@@ -76,15 +53,21 @@ useEffect(() => {
       loading ? (
         <h1>Loading...</h1>
       ) : (
-        <PersonalProfile ethanInfo={found} />
+        <PersonalProfile ethanInfo={null} />
       )
      }
       <Styledh3>View other Profiles:</Styledh3>
-      {users?.map(user => {
+      {
+      loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        users?.map(user => {
         return (
           <UserCard user={user} id={user.id}/>
         )
-      })}
+      })
+      )
+      }
     </AppContainer>
     
   );
