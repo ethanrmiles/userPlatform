@@ -46,9 +46,13 @@ useEffect(() => {
     <AppContainer>
       <h1>Welcome!</h1>
       <h2>Here is your profile:</h2>
-      <PersonalProfile/>
+      <PersonalProfile ethanInfo={users?.filter(user => user.name === 'Ethan')} />
       <Styledh3>View other Profiles:</Styledh3>
-      {/* {users.map(user => <UserCard user={user} />)} */}
+      {users?.map(user => {
+        return (
+          <UserCard user={user} id={user.id}/>
+        )
+      })}
     </AppContainer>
     
   );
