@@ -28,25 +28,57 @@ const Styledh3 = styled.h3`
 
 function App() {
   const [ users, setUsers ]  = useState()
+  const [loading, setLoading] = useState(false)
 
-useEffect(() => {
-
-  const fetchData = async () => {
-    axios.get('http://localhost:3000/api/users')
-  .then(res => {
-    
-    setUsers(res.data.users)
-  })
-  .catch(err => console.log(err))
+  const fetchUsers = async () => {
+    const fetched = await axios.get('http://localhost:3000/api/users')
+    .then(res => {
+      setUsers(res.data.users)
+    })
+    .catch(err => {
+      console.log('🚨', err)
+    })
   }
-  fetchData()
+
   
+useEffect(() => {
+  setLoading(true)
+  fetchUsers()
+  setLoading(false)
 }, [])
+
+// useEffect(() => {
+//   console.log(users)
+// }, [users])
+
+// useEffect(() => {
+//   const loadUsers = async () => {
+//     setLoading(true)
+//     const res = await axios.get('http://localhost:3000/api/users')
+//     setUsers(res.data.users)
+//     debugger
+//     setLoading(false)
+//     console.log(`Fetched Users: ${ { users } }`)
+//   }
+
+//   loadUsers()
+// }, [])
+
+  const found = users?.find(user => {
+    return user.name === 'Ethan'
+  })
+
   return (
     <AppContainer>
       <h1>Welcome!</h1>
       <h2>Here is your profile:</h2>
-      <PersonalProfile ethanInfo={users?.filter(user => user.name === 'Ethan')} />
+     {
+      loading ? (
+        <h1>Loading...</h1>
+      ) : (
+        <PersonalProfile ethanInfo={found} />
+      )
+     }
       <Styledh3>View other Profiles:</Styledh3>
       {users?.map(user => {
         return (
