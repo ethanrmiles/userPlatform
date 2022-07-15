@@ -9,7 +9,9 @@ const StyledUserCard = styled.div`
     flex-direction: column;
     align-content: left;
     padding: 10%;
-    border-radius: 5%
+    border-radius: 5%;
+    margin-bottom: 5%
+    
 `
 
 const StyledProfilePicture = styled.img`

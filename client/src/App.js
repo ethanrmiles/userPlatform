@@ -48,7 +48,7 @@ useEffect(() => {
       <h2>Here is your profile:</h2>
       <PersonalProfile/>
       <Styledh3>View other Profiles:</Styledh3>
-      {users.map(user => <UserCard user={user} />)}
+      {/* {users.map(user => <UserCard user={user} />)} */}
     </AppContainer>
     
   );
